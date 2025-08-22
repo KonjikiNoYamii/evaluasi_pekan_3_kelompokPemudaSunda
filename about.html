@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tentang Kami — Brand Anda</title>
+  <meta name="description" content="Halaman Tentang Kami modern, responsif, dan elegan dengan HTML & CSS murni." />
+  <style>
+    :root{
+      --bg: #0f172a;          /* slate-900 */
+      --card: #111827;        /* gray-900 */
+      --muted: #94a3b8;       /* slate-400 */
+      --text: #e5e7eb;        /* gray-200 */
+      --brand: #22d3ee;       /* cyan-400 */
+      --brand-2: #a78bfa;     /* violet-400 */
+      --ring: #243244;        /* slate-800 */
+      --ring-2:#334155;       /* slate-700 */
+      --shadow: 0 12px 34px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f8fafc;        /* slate-50 */
+        --card: #ffffff;
+        --muted: #334155;     /* slate-700 */
+        --text: #0f172a;      /* slate-900 */
+        --ring: #e2e8f0;      /* slate-200 */
+        --ring-2:#cbd5e1;     /* slate-300 */
+        --shadow: 0 10px 28px rgba(2,6,23,.08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(34,211,238,.15), transparent 60%),
+        radial-gradient(1000px 500px at -10% 10%, rgba(167,139,250,.12), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      line-height:1.7;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(8px);
+      background-color: color-mix(in oklab, var(--bg), transparent 40%);
+      border-bottom:1px solid var(--ring);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo{width:36px;height:36px;border-radius:10px;background: linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow: var(--shadow)}
+    .nav a:hover{opacity:.85}
+    .btn{
+      display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1rem;border-radius:999px;
+      background: linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b1020;font-weight:700;
+      box-shadow: var(--shadow); border:0; cursor:pointer
+    }
+    .btn-outline{background:transparent;border:1px solid var(--ring-2);color:var(--text)}
+
+    /* Hero */
+    .hero{padding:64px 0}
+    .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .75rem;border-radius:999px;border:1px solid var(--ring-2);color:var(--muted);font-size:.9rem}
+    .badge .ping{width:8px;height:8px;border-radius:999px;background:var(--brand);box-shadow:0 0 0 6px color-mix(in oklab, var(--brand), transparent 75%)}
+    h1{font-size:clamp(2rem, 3.4vw, 3rem);line-height:1.2;margin:10px 0 12px}
+    .lead{font-size:1.1rem;color:var(--muted)}
+    .hero-card{background:linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 10%), var(--card)); border:1px solid var(--ring-2);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+
+    /* Sections */
+    section{padding:28px 0}
+    .section-title{font-size:1.6rem;margin:0 0 14px}
+    .grid{display:grid;gap:16px}
+
+    /* Vision Mission cards */
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--card);border:1px solid var(--ring-2);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .6rem}
+    .muted{color:var(--muted)}
+
+    /* Values */
+    .values{grid-template-columns:repeat(4,1fr)}
+    .value{background:var(--card);border:1px solid var(--ring-2);border-radius:16px;padding:16px}
+    .value h4{margin:.2rem 0 .35rem}
+
+    /* Team */
+    .team{grid-template-columns:repeat(3,1fr)}
+    .member{background:var(--card);border:1px solid var(--ring-2);border-radius:16px;overflow:hidden}
+    .member img{aspect-ratio:16/10;object-fit:cover}
+    .member .body{padding:14px}
+    .role{font-size:.95rem;color:var(--muted)}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input, textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--ring-2);background:transparent;color:var(--text)}
+    textarea{min-height:110px;resize:vertical}
+    .note{font-size:.92rem;color:var(--muted)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--ring);margin-top:32px}
+    .foot{display:flex;justify-content:space-between;gap:12px;padding:22px 0;color:var(--muted);font-size:.95rem}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .values{grid-template-columns:repeat(2,1fr)}
+      .team{grid-template-columns:repeat(2,1fr)}
+      .cards{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .values{grid-template-columns:1fr}
+      .team{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <a href="#" aria-label="Beranda">Brand Anda</a>
+      </div>
+      <nav class="links" aria-label="Navigasi">
+        <a href="#visi-misi">Visi & Misi</a>
+        &nbsp;&nbsp;•&nbsp;&nbsp;
+        <a href="#nilai">Nilai</a>
+        &nbsp;&nbsp;•&nbsp;&nbsp;
+        <a href="#tim">Tim</a>
+        &nbsp;&nbsp;•&nbsp;&nbsp;
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <a class="btn" href="#kontak">Hubungi Kami</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="container hero">
+    <div class="hero-grid">
+      <div>
+        <span class="badge"><span class="ping"></span> Sejak 2020 — Melayani dengan Integritas</span>
+        <h1>Tentang Kami
+          <br /><span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Misi, Nilai, dan Tim</span>
+        </h1>
+        <p class="lead">Kami adalah tim multidisiplin yang berfokus pada kualitas layanan, kolaborasi, dan inovasi berkelanjutan. Halaman ini merangkum siapa kami, apa yang kami yakini, dan bagaimana kami bekerja untuk Anda.</p>
+        <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap">
+          <a class="btn" href="#visi-misi">Pelajari Visi</a>
+          <a class="btn btn-outline" href="#nilai">Lihat Nilai</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h2 style="margin:0 0 8px">Fakta Singkat</h2>
+        <ul class="muted" style="margin:0; padding-left:18px">
+          <li>Beroperasi di 10+ kota di Indonesia</li>
+          <li>99% kepuasan pelanggan sejak 2022</li>
+          <li>Tim inti berpengalaman & lintas disiplin</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Visi & Misi -->
+  <section id="visi-misi" class="container">
+    <h2 class="section-title">Visi & Misi</h2>
+    <div class="grid cards">
+      <article class="card">
+        <h3>Visi</h3>
+        <p class="muted">Menjadi mitra tepercaya yang memberikan dampak positif dan berkelanjutan bagi pelanggan serta komunitas melalui solusi yang sederhana namun bermakna.</p>
+      </article>
+      <article class="card">
+        <h3>Misi</h3>
+        <ul class="muted" style="margin:0; padding-left:18px">
+          <li>Menyediakan layanan yang akurat, cepat, dan ramah.</li>
+          <li>Mendorong kolaborasi dan pembelajaran berkelanjutan.</li>
+          <li>Mengutamakan kualitas, keamanan, dan aksesibilitas.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Nilai -->
+  <section id="nilai" class="container">
+    <h2 class="section-title">Nilai Inti</h2>
+    <div class="grid values">
+      <div class="value">
+        <h4>Integritas</h4>
+        <p class="muted">Transparan dalam proses, konsisten dalam janji, bertanggung jawab pada hasil.</p>
+      </div>
+      <div class="value">
+        <h4>Kualitas</h4>
+        <p class="muted">Standar tinggi, detail rapi, dan perbaikan berkelanjutan di setiap langkah.</p>
+      </div>
+      <div class="value">
+        <h4>Kolaborasi</h4>
+        <p class="muted">Bekerja bersama klien dan mitra untuk mencapai hasil yang lebih besar.</p>
+      </div>
+      <div class="value">
+        <h4>Inovasi</h4>
+        <p class="muted">Selalu mencoba cara baru yang relevan dan berdampak.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tim -->
+  <section id="tim" class="container">
+    <h2 class="section-title">Tim Kami</h2>
+    <div class="grid team">
+      <article class="member">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop" alt="Foto anggota tim 1" />
+        <div class="body">
+          <h3>Andi Pratama</h3>
+          <p class="role">CEO & Co‑Founder</p>
+        </div>
+      </article>
+      <article class="member">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" alt="Foto anggota tim 2" />
+        <div class="body">
+          <h3>Siti Lestari</h3>
+          <p class="role">Head of Operations</p>
+        </div>
+      </article>
+      <article class="member">
+        <img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=1200&auto=format&fit=crop" alt="Foto anggota tim 3" />
+        <div class="body">
+          <h3>Budi Santoso</h3>
+          <p class="role">Lead Designer</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Kontak -->
+  <section id="kontak" class="container">
+    <h2 class="section-title">Hubungi Kami</h2>
+    <p class="muted">Ada pertanyaan atau ide kolaborasi? Kirimkan pesan Anda melalui formulir berikut.</p>
+    <form onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda sudah terkirim.'); this.reset();">
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
+        <input name="nama" placeholder="Nama" required />
+        <input type="email" name="email" placeholder="Email" required />
+      </div>
+      <textarea name="pesan" placeholder="Tulis pesan Anda..." required></textarea>
+      <button class="btn" type="submit">Kirim Pesan</button>
+      <p class="note">Dengan mengirimkan formulir ini, Anda menyetujui pemrosesan data sesuai kebijakan privasi kami.</p>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <span>© <span id="y"></span> Brand Anda. All rights reserved.</span>
+      <span class="muted">Jakarta, Indonesia</span>
+    </div>
+  </footer>
+
+  <script>
+    // tahun berjalan
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
